@@ -1,10 +1,29 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
     return render_template('home.html')
+
+@app.route('/graph')
+def graph():
+    return render_template('graph.html')   
+
+
+# Endpoint that returns data in JSON format
+@app.route('/data')
+def get_data():
+    
+    data = {
+        'labels': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        'values': [100, 200, 300, 400, 500, 600],
+        'descriptions': ['January data', 'February data', 'March data', 'April data', 'May data', 'June data']
+   
+    }
+    
+    return jsonify(data)
+
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
