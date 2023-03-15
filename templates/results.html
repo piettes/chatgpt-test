@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
@@ -11,7 +12,7 @@
             <h3 class="card-title mb-0">Results</h3>
         </div>
         <div class="card-body">
-            <p class="card-text">Your carbon footprint is <strong>{{carbon_footprint}}</strong> metric tons of CO2 per year.</p>
+            <p class="card-text">Your carbon footprint is <strong>{{ total_footprint }}</strong> metric tons of CO2 per year.</p>
             <p class="card-text">To reduce your carbon footprint, you can:</p>
             <ul class="list-group list-group-flush">
                 {% for tip in tips %}
