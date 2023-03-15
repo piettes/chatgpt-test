@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carbon Footprint Tracker</title>
+</head>
+<body>
+    <h1>Carbon Footprint Tracker</h1>
+    <p>Welcome to the Carbon Footprint Tracker! This app helps you calculate your carbon footprint and provides tips on how to reduce your impact on the environment.</p>
+    <form action="/calculate" method="post">
+        <h2>Transportation</h2>
+        <p>How do you usually commute to work/school?</p>
+        <label for="driving">Driving:</label>
+        <input type="radio" name="transportation" id="driving" value="driving">
+        <label for="public_transport">Public transport:</label>
+        <input type="radio" name="transportation" id="public_transport" value="public_transport">
+        <label for="walking">Walking/biking:</label>
+        <input type="radio" name="transportation" id="walking" value="walking">
+        <br>
+        <h2>Food</h2>
+        <p>What kind of food do you usually eat?</p>
+        <label for="meat">Meat:</label>
+        <input type="radio" name="food" id="meat" value="meat">
+        <label for="vegetarian">Vegetarian:</label>
+        <input type="radio" name="food" id="vegetarian" value="vegetarian">
+        <br>
+        <h2>Home Energy Use</h2>
+        <p>How do you usually heat/cool your home?</p>
+        <label for="electricity">Electricity:</label>
+        <input type="radio" name="home_energy" id="electricity" value="electricity">
+        <label for="natural_gas">Natural gas:</label>
+        <input type="radio" name="home_energy" id="natural_gas" value="natural_gas">
+        <br><br>
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
