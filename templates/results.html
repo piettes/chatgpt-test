@@ -2,9 +2,27 @@
 <html>
 <head>
     <title>Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Your carbon footprint</h1>
-    <p>Your total carbon footprint is: {{ total_footprint }} kg CO2 per year.</p>
+<body class="bg-light">
+<div class="container py-5">
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h3 class="card-title mb-0">Results</h3>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Your carbon footprint is <strong>{{carbon_footprint}}</strong> metric tons of CO2 per year.</p>
+            <p class="card-text">To reduce your carbon footprint, you can:</p>
+            <ul class="list-group list-group-flush">
+                {% for tip in tips %}
+                <li class="list-group-item">{{ tip }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="card-footer">
+            <a href="/" class="btn btn-primary">Calculate Again</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

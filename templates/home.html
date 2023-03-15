@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Carbon Footprint Tracker</title>
+    <title>Carbon Footprint Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 </head>
-<body>
-    <h1>Carbon Footprint Tracker</h1>
-    <p>Welcome to the Carbon Footprint Tracker! This app helps you calculate your carbon footprint and provides tips on how to reduce your impact on the environment.</p>
-    <form action="/calculate" method="post">
-        <h2>Transportation</h2>
-        <p>How do you usually commute to work/school?</p>
-        <label for="driving">Driving:</label>
-        <input type="radio" name="transportation" id="driving" value="driving">
-        <label for="public_transport">Public transport:</label>
-        <input type="radio" name="transportation" id="public_transport" value="public_transport">
-        <label for="walking">Walking/biking:</label>
-        <input type="radio" name="transportation" id="walking" value="walking">
-        <br>
-        <h2>Food</h2>
-        <p>What kind of food do you usually eat?</p>
-        <label for="meat">Meat:</label>
-        <input type="radio" name="food" id="meat" value="meat">
-        <label for="vegetarian">Vegetarian:</label>
-        <input type="radio" name="food" id="vegetarian" value="vegetarian">
-        <br>
-        <h2>Home Energy Use</h2>
-        <p>How do you usually heat/cool your home?</p>
-        <label for="electricity">Electricity:</label>
-        <input type="radio" name="home_energy" id="electricity" value="electricity">
-        <label for="natural_gas">Natural gas:</label>
-        <input type="radio" name="home_energy" id="natural_gas" value="natural_gas">
-        <br><br>
-        <input type="submit" value="Calculate">
+<body class="bg-gray-100">
+<div class="max-w-lg mx-auto my-8 bg-white rounded-lg shadow-lg">
+    <form class="p-6" method="POST" action="/calculate">
+        <h1 class="text-3xl font-bold text-center mb-6">Carbon Footprint Calculator</h1>
+        <label class="block mb-2 font-bold" for="transportation">
+            Transportation:
+        </label>
+        <div class="flex items-center mb-4">
+            <input class="mr-2" type="radio" id="driving" name="transportation" value="driving" checked>
+            <label class="mr-8" for="driving">Driving</label>
+            <input class="mr-2" type="radio" id="public_transport" name="transportation" value="public_transport">
+            <label class="mr-8" for="public_transport">Public transport</label>
+            <input class="mr-2" type="radio" id="walking" name="transportation" value="walking">
+            <label for="walking">Walking or biking</label>
+        </div>
+        <label class="block mb-2 font-bold" for="food">
+            Food:
+        </label>
+        <div class="flex items-center mb-4">
+            <input class="mr-2" type="radio" id="meat" name="food" value="meat" checked>
+            <label class="mr-8" for="meat">Meat</label>
+            <input class="mr-2" type="radio" id="vegetarian" name="food" value="vegetarian">
+            <label for="vegetarian">Vegetarian or vegan</label>
+        </div>
+        <label class="block mb-2 font-bold" for="home_energy">
+            Home energy:
+        </label>
+        <div class="flex items-center mb-4">
+            <input class="mr-2" type="radio" id="electricity" name="home_energy" value="electricity" checked>
+            <label class="mr-8" for="electricity">Electricity</label>
+            <input class="mr-2" type="radio" id="natural_gas" name="home_energy" value="natural_gas">
+            <label for="natural_gas">Natural gas</label>
+        </div>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            Calculate
+        </button>
     </form>
+</div>
 </body>
 </html>
