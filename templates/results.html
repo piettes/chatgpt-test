@@ -1,29 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Results</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<body class="bg-light">
-<div class="container py-5">
-    <div class="card">
-        <div class="card-header bg-info text-white">
-            <h3 class="card-title mb-0">Results</h3>
-        </div>
-        <div class="card-body">
-            <p class="card-text">Your carbon footprint is <strong>{{ total_footprint }}</strong> metric tons of CO2 per year.</p>
-            <p class="card-text">To reduce your carbon footprint, you can:</p>
-            <ul class="list-group list-group-flush">
-                {% for tip in tips %}
-                <li class="list-group-item">{{ tip }}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="card-footer">
-            <a href="/" class="btn btn-primary">Calculate Again</a>
-        </div>
-    </div>
-</div>
+<body>
+
 </body>
 </html>
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+  <h2 class="text-center">Your Carbon Footprint Results</h2>
+  <hr class="mb-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Transportation</h5>
+        </div>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">Carbon Footprint: {{transportation_carbon_footprint}} kgCO<sub>2</sub>e</h6>
+          <ul class="list-group mt-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="font-weight-bold">Type of Transportation:</span>
+              <span>{{transportation_type}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="font-weight-bold">Amount of Transportation:</span>
+              <span>{{transportation_amount}} km</span>
+            </li>
+            {% if transportation_fuel_type %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="font-weight-bold">Fuel Type:</span>
+              <span>{{transportation_fuel_type}}</span>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Food</h5>
+        </div>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-2 text-muted">Carbon Footprint: {{food_carbon_footprint}} kgCO<sub>2</sub>e</h6>
+          <ul class="list-group mt-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="font-weight-bold">Type of Food:</span>
+              <span>{{food_type}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="font-weight-bold">Amount of Food:</span>
+              <span>{{food_amount}} kg</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Total Carbon Footprint</h5>
+        </div>
+        <div class="card-body text-center">
+          <h2 class="mb-4">{{total_carbon_footprint}} kgCO<sub>2</sub>e</h2>
+          {% if total_carbon_footprint < 5 %}
+            <p class="text-success">Great job! Your carbon footprint is very low.</p>
+          {% elif total_carbon_footprint >= 5 and total_carbon_footprint < 10 %}
+            <p class="text-warning">Your carbon footprint is average. You can still make some changes to reduce it further.</p>
+          {% else %}
+            <p class="text-danger">Your carbon footprint is high. You need to make significant changes to reduce it further.</p>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

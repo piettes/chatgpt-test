@@ -1,0 +1,29 @@
+ <h1>Carbon Footprint Tracker - Food</h1>
+ <div class="row">
+    <div class="col-md-6">
+      <h2>Calculate your food carbon footprint</h2>
+      <form method="post" action="{{ url_for('calculate_food_carbon_footprint') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{ form.food_type.label() }}
+          {{ form.food_type(class="form-control") }}
+        </div>
+        <div class="form-group">
+          {{ form.weight.label() }}
+          {{ form.weight(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h2>Tips to reduce your food footprint</h2>
+      <ul>
+        <li>Choose locally sourced and seasonal foods</li>
+        <li>Reduce meat consumption, especially beef and lamb</li>
+        <li>Choose organic and fair-trade foods</li>
+        <li>Avoid processed foods and excess packaging</li>
+        <li>Reduce food waste by planning meals and using leftovers</li>
+        <li>Compost food scraps and yard waste</li>
+      </ul>
+    </div>
+  </div>

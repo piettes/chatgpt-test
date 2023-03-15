@@ -1,0 +1,27 @@
+ <h1>Carbon Footprint Tracker</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Transportation</h2>
+      <p>Calculate the carbon footprint of your transportation.</p>
+      <a href="{{ url_for('calculate_transportation_carbon_footprint') }}" class="btn btn-primary">Calculate</a>
+    </div>
+    <div class="col-md-6">
+      <h2>Food</h2>
+      <p>Calculate the carbon footprint of your food.</p>
+      <a href="{{ url_for('food') }}" class="btn btn-primary">Calculate</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Energy</h2>
+      <p>Calculate the carbon footprint of your home energy use.</p>
+      <a href="{{ url_for('energy') }}" class="btn btn-primary">Calculate</a>
+    </div>
+    <div class="col-md-6">
+      <h2>Tips</h2>
+      <p>Learn how to reduce your carbon footprint with our tips.</p>
+      <a href="{{ url_for('tips') }}" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+
+
