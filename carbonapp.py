@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+import random
 
 app = Flask(__name__)
 
@@ -23,6 +24,21 @@ def get_data():
     }
     
     return jsonify(data)
+
+@app.route('/points')
+def get_points():
+    points = []
+    names = ["Point A", "Point B", "Point C", "Point D", "Point E", "Point F"]
+    short_descs = ["This is point A", "This is point B", "This is point C", "This is point D", "This is point E", "This is point F"]
+    long_descs = ["This is a longer description for point A", "This is a longer description for point B", "This is a longer description for point C", "This is a longer description for point D", "This is a longer description for point E", "This is a longer description for point F"]
+    for i in range(6):
+        point = {}
+        point['label'] = names[i]
+        point['value'] = random.randint(1, 10)
+        point['short_desc'] = short_descs[i]
+        point['long_desc'] = long_descs[i]
+        points.append(point)
+    return jsonify({'data': points})
 
 
 @app.route('/calculate', methods=['POST'])
