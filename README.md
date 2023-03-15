@@ -1,3 +1,5 @@
 # ChatGPT Hackathon
 
-More to come...
+Run with:
+
+`flask --app carbonapp run`
