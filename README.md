@@ -1,1 +1,3 @@
-# chatgpt
+# ChatGPT Hackathon
+
+More to come...
