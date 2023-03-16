@@ -32,9 +32,11 @@ AVERAGE_DAILY_FOOD_CONSUMPTION = 1.5  # kg per day
 AVERAGE_HOME_ENERGY_USE = 8000 / 365  # kWh per day
 DAYS_IN_YEAR = 365
 
+
 @app.route('/')
 def home():
     return render_template('home.html')
+
 
 @app.route('/graph')
 def graph():
@@ -72,6 +74,7 @@ def get_points():
         points.append(point)
     return jsonify({'data': points})
 
+
 @app.route('/calculate', methods=['POST'])
 def calculate():
     # Retrieve user inputs from form
@@ -103,12 +106,16 @@ def calculate():
     # total_footprint = transportation_footprint * 10 + food_footprint * 2 + home_energy_footprint * 1000 # assuming 10 km per day, 2 meals per day, and 1000 kWh per year
 
     # Render template with results
-    return render_template('results.html', total_footprint=carbon_footprint_per_year, transportation_footprint=transportation_footprint * AVERAGE_DAILY_DRIVING, food_footprint=food_footprint * AVERAGE_DAILY_FOOD_CONSUMPTION, home_energy_footprint=home_energy_footprint * AVERAGE_HOME_ENERGY_USE)
+    return render_template('results.html', total_footprint=carbon_footprint_per_year,
+                           transportation_footprint=transportation_footprint * AVERAGE_DAILY_DRIVING * .365,
+                           food_footprint=food_footprint * AVERAGE_DAILY_FOOD_CONSUMPTION * .365,
+                           home_energy_footprint=home_energy_footprint * AVERAGE_HOME_ENERGY_USE * .365)
+
 
 @app.errorhandler(400)
 def bad_request(e):
     return render_template('error.html'), 400
 
+
 if __name__ == '__main__':
     app.run(debug=True)
-
