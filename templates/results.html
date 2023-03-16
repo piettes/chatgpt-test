@@ -22,6 +22,24 @@
             animation: rotate 5s linear infinite;
         }
 
+        /* Define the animation keyframes */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Apply the animation to the circle element */
+        .blink {
+            animation: blink 1s ease-in-out infinite;
+        }
+
     </style>
 </head>
 <body class="bg-light">
@@ -30,7 +48,7 @@
 
     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="max-width: 300px">
         <circle cx="50" cy="50" r="45" fill="#4CAF50" />
-        <path d="M70,30 L50,70 L30,30 L70,30 Z" fill="#FFF" />
+        <path class="blink" d="M70,30 L50,70 L30,30 L70,30 Z" fill="#FFF" />
         <text class="rotating" x="50" y="65" text-anchor="middle" fill="#6C7A89" font-size="36">CFP</text>
     </svg>
 
