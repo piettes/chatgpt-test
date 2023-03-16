@@ -32,7 +32,7 @@
 //     });
 //
 
-
+//test comment
 fetch('/points')
   .then(response => response.json())
   .then(data => {
