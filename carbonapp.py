@@ -9,20 +9,20 @@ def home():
 
 @app.route('/graph')
 def graph():
-    return render_template('graph.html')   
+    return render_template('graph.html')
 
 
 # Endpoint that returns data in JSON format
 @app.route('/data')
 def get_data():
-    
+
     data = {
         'labels': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
         'values': [100, 200, 300, 400, 500, 600],
         'descriptions': ['January data', 'February data', 'March data', 'April data', 'May data', 'June data']
-   
+
     }
-    
+
     return jsonify(data)
 
 @app.route('/points')
@@ -85,11 +85,30 @@ def calculate():
         print("Invalid input. Please enter a valid energy source.")
         home_energy_footprint = 0
 
+    # Set average values
+    average_daily_driving = 13  # km per day
+    # average_daily_walking = 3  # km per day
+    average_daily_food_consumption = 1.5  # kg per day
+    average_home_energy_use = 8000 / 365  # kWh per day
+    days_in_year = 365
+
+    # Calculate total carbon footprint per year
+    total_footprint = (transportation_footprint * average_daily_driving +
+                        # walking_footprint * average_daily_walking +
+                        food_footprint * average_daily_food_consumption +
+                        home_energy_footprint * average_home_energy_use) / 1000
+    carbon_footprint_per_year = total_footprint * days_in_year
+
+    # This assumes an average of 13 km driving per day, 3 km walking per day, 1.5 kg of food consumed per day,
+    # and an average daily home energy use of 21.92 kWh (calculated by dividing 8000 kWh by 365 days).
+    # The days_in_year variable is set to 365. The total_footprint is divided by 1000 to convert it to metric tons of CO2 equivalent,
+    # and then multiplied by days_in_year to get the carbon_footprint_per_year.
     # Calculate total carbon footprint
-    total_footprint = transportation_footprint * 10 + food_footprint * 2 + home_energy_footprint * 1000 # assuming 10 km per day, 2 meals per day, and 1000 kWh per year
+
+    #total_footprint = transportation_footprint * 10 + food_footprint * 2 + home_energy_footprint * 1000 # assuming 10 km per day, 2 meals per day, and 1000 kWh per year
 
     # Render template with results
-    return render_template('results.html', total_footprint=total_footprint)
+    return render_template('results.html', total_footprint=carbon_footprint_per_year)
 
 if __name__ == '__main__':
     app.run(debug=True)
