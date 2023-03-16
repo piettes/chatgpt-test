@@ -5,9 +5,36 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        /* Define the animation keyframes */
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Apply the animation to the text element */
+        .rotating {
+            animation: rotate 5s linear infinite;
+        }
+
+    </style>
 </head>
 <body class="bg-light">
 <div class="container py-5">
+
+
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="max-width: 300px">
+        <circle cx="50" cy="50" r="45" fill="#4CAF50" />
+        <path d="M70,30 L50,70 L30,30 L70,30 Z" fill="#FFF" />
+        <text class="rotating" x="50" y="65" text-anchor="middle" fill="#6C7A89" font-size="36">CFP</text>
+    </svg>
+
+
     <div class="card">
         <div class="card-header bg-info text-white">
             <h3 class="card-title mb-0">Results</h3>
