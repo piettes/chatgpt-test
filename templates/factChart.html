@@ -8,6 +8,11 @@
 		max-width: 600px;
 		max-height: 400px;
 	}
+    #myChart2 {
+		max-width: 600px;
+		max-height: 400px;
+	}
+
     </style>
 
 </head>
@@ -149,5 +154,81 @@
 			}
 		});
 	</script>
+
+</br>
+
+    <table id="data-table-transport">
+		<thead>
+			<tr>
+				<th>Mode of Transportation</th>
+				<th>Gasoline (kg CO2e/km)</th>
+				<th>Diesel (kg CO2e/km)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Car</td>
+				<td>0.27</td>
+				<td>0.24</td>
+			</tr>
+			<tr>
+				<td>Motorcycle</td>
+				<td>0.12</td>
+				<td>0.11</td>
+			</tr>
+			<tr>
+				<td>Bus</td>
+				<td>0.04</td>
+				<td>0.05</td>
+			</tr>
+		</tbody>
+	</table>
+	<canvas id="myChart2"></canvas>
+	<script>
+		// Get the data from the table
+		var table2 = document.getElementById('data-table-transport');
+		var data3 = {
+			labels: [],
+			datasets: [
+				{
+					label: 'Gasoline (kg CO2e/km)',
+					data: [],
+					backgroundColor: 'rgba(255, 99, 132, 0.2)',
+					borderColor: 'rgba(255, 99, 132, 1)',
+					borderWidth: 1
+				},
+				{
+					label: 'Diesel (kg CO2e/km)',
+					data: [],
+					backgroundColor: 'rgba(54, 162, 235, 0.2)',
+					borderColor: 'rgba(54, 162, 235, 1)',
+					borderWidth: 1
+				}
+			]
+		};
+
+		for (var i = 1; i < table2.rows.length; i++) {
+			data3.labels.push(table2.rows[i].cells[0].textContent);
+			data3.datasets[0].data.push(parseFloat(table2.rows[i].cells[1].textContent));
+			data3.datasets[1].data.push(parseFloat(table2.rows[i].cells[2].textContent));
+		}
+
+		// Create the chart
+		var ctx2 = document.getElementById('myChart2').getContext('2d');
+		var myChart2 = new Chart(ctx2, {
+			type: 'line',
+			data: data3,
+			options: {
+				scales: {
+					xAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+	</script>
+
 </body>
 </html>
