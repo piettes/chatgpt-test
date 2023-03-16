@@ -9,7 +9,12 @@ def home():
 
 @app.route('/graph')
 def graph():
-    return render_template('graph.html')   
+    return render_template('graph.html')
+
+
+@app.route('/fact')
+def fact():
+    return render_template('factChart.html')
 
 
 # Endpoint that returns data in JSON format

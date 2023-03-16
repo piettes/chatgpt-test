@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table to Graph</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+	<table id="data-table">
+		<thead>
+			<tr>
+				<th>Food</th>
+				<th>CO2e (kg) - ChatGPT</th>
+                <th>CO2e (kg) - research</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Beef</td>
+				<td>27</td>
+                <td>100</td>
+			</tr>
+			<tr>
+				<td>Chicken</td>
+				<td>6.9</td>
+                <td>10</td>
+			</tr>
+			<tr>
+				<td>Pork</td>
+				<td>5.8</td>
+                <td>12</td>
+			</tr>
+			<tr>
+				<td>Lamb</td>
+				<td>39.2</td>
+                <td>40</td>
+			</tr>
+			<tr>
+				<td>Fish</td>
+				<td>3.7</td>
+                <td>14</td>
+			</tr>
+			<tr>
+				<td>Eggs</td>
+				<td>4.8</td>
+                <td>5</td>
+			</tr>
+			<tr>
+				<td>Cheese</td>
+				<td>13.5</td>
+                <td>24</td>
+			</tr>
+			<tr>
+				<td>Rice</td>
+				<td>2.7</td>
+                <td>4.5</td>
+			</tr>
+			<tr>
+				<td>Pasta</td>
+				<td>2.5</td>
+                <td>2.6</td>
+			</tr>
+			<tr>
+				<td>Bread</td>
+				<td>1.4</td>
+                <td>1.2</td>
+			</tr>
+			<tr>
+				<td>Potatoes</td>
+				<td>0.2</td>
+                <td>0.5</td>
+			</tr>
+			<tr>
+				<td>Vegetables</td>
+				<td>0.2</td>
+                <td>0.5</td>
+			</tr>
+			<tr>
+				<td>Fruit</td>
+				<td>0.4</td>
+                <td>1</td>
+			</tr>
+			<tr>
+				<td>Nuts</td>
+				<td>2.3</td>
+                <td>0.4</td>
+			</tr>
+			<tr>
+				<td>Beans</td>
+				<td>0.9</td>
+                <td>2</td>
+			</tr>
+			<tr>
+				<td>Tofu</td>
+				<td>2.0</td>
+                <td>3.0</td>
+			</tr>
+		</tbody>
+	</table>
+	<canvas id="myChart"></canvas>
+	<script>
+		// Get the table data
+		const table = document.getElementById('data-table');
+		const labels = [];
+		const data = [];
+		for (let i = 1; i < table.rows.length; i++) {
+			const row = table.rows[i];
+			labels.push(row.cells[0].textContent);
+			data.push(row.cells[1].textContent);
+            data.push(row.cells[2].textContent);
+		}
+
+		// Create the chart
+		const ctx = document.getElementById('myChart').getContext('2d');
+		const myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: labels,
+				datasets: [{
+					label: 'CO2e (kg)',
+					data: data,
+					backgroundColor: 'rgba(54, 162, 235, 0.2)',
+					borderColor: 'rgba(54, 162, 235, 1)',
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+	</script>
+</body>
+</html>
