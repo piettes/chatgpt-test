@@ -93,22 +93,15 @@ def calculate():
     days_in_year = 365
 
     # Calculate total carbon footprint per year
-    total_footprint = (transportation_footprint * average_daily_driving +
-                        # walking_footprint * average_daily_walking +
-                        food_footprint * average_daily_food_consumption +
-                        home_energy_footprint * average_home_energy_use) / 1000
+    total_transportation = transportation_footprint * average_daily_driving
+    total_food = food_footprint * average_daily_food_consumption
+    total_energy = home_energy_footprint * average_home_energy_use
+
+    total_footprint = (total_transportation + total_food + total_energy) / 1000
     carbon_footprint_per_year = total_footprint * days_in_year
 
-    # This assumes an average of 13 km driving per day, 3 km walking per day, 1.5 kg of food consumed per day,
-    # and an average daily home energy use of 21.92 kWh (calculated by dividing 8000 kWh by 365 days).
-    # The days_in_year variable is set to 365. The total_footprint is divided by 1000 to convert it to metric tons of CO2 equivalent,
-    # and then multiplied by days_in_year to get the carbon_footprint_per_year.
-    # Calculate total carbon footprint
-
-    #total_footprint = transportation_footprint * 10 + food_footprint * 2 + home_energy_footprint * 1000 # assuming 10 km per day, 2 meals per day, and 1000 kWh per year
-
     # Render template with results
-    return render_template('results.html', total_footprint=carbon_footprint_per_year)
+    return render_template('results.html', total_footprint=carbon_footprint_per_year, total_transportation=total_transportation, total_food=total_food, total_energy=total_energy)
 
 if __name__ == '__main__':
     app.run(debug=True)

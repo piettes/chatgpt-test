@@ -4,6 +4,7 @@
     <title>Results</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body class="bg-light">
 <div class="container py-5">
@@ -24,6 +25,26 @@
             <a href="/" class="btn btn-primary">Calculate Again</a>
         </div>
     </div>
+
+    <div id="chart"></div>
+    <script>
+        var trace1 = {
+            x: ['Transportation', 'Food', 'Energy'],
+            y: [{{total_transportation}}, {{total_food}}, {{total_energy}}],
+            type: 'bar'
+        };
+
+        var data = [trace1];
+
+        var layout = {
+            title: 'Carbon Footprint Breakdown',
+            xaxis: {title: 'Category'},
+            yaxis: {title: 'Carbon Footprint (metric tons CO2 equivalent)'}
+        };
+
+        Plotly.newPlot('chart', data, layout);
+    </script>
+
 </div>
 </body>
 </html>
