@@ -103,7 +103,7 @@ def calculate():
     # total_footprint = transportation_footprint * 10 + food_footprint * 2 + home_energy_footprint * 1000 # assuming 10 km per day, 2 meals per day, and 1000 kWh per year
 
     # Render template with results
-    return render_template('results.html', total_footprint=carbon_footprint_per_year)
+    return render_template('results.html', total_footprint=carbon_footprint_per_year, transportation_footprint=transportation_footprint, food_footprint=food_footprint, home_energy_footprint=home_energy_footprint)
 
 @app.errorhandler(400)
 def bad_request(e):
