@@ -3,6 +3,13 @@
 <head>
 	<title>Table to Graph</title>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+	#myChart {
+		max-width: 600px;
+		max-height: 400px;
+	}
+    </style>
+
 </head>
 <body>
 	<table id="data-table">
@@ -10,7 +17,7 @@
 			<tr>
 				<th>Food</th>
 				<th>CO2e (kg) - ChatGPT</th>
-                <th>CO2e (kg) - research</th>
+                <th>CO2e (kg) - Research</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -102,11 +109,12 @@
 		const table = document.getElementById('data-table');
 		const labels = [];
 		const data = [];
+        const data2 = [];
 		for (let i = 1; i < table.rows.length; i++) {
 			const row = table.rows[i];
 			labels.push(row.cells[0].textContent);
 			data.push(row.cells[1].textContent);
-            data.push(row.cells[2].textContent);
+            data2.push(row.cells[2].textContent);
 		}
 
 		// Create the chart
@@ -116,12 +124,19 @@
 			data: {
 				labels: labels,
 				datasets: [{
-					label: 'CO2e (kg)',
+					label: 'CO2e (kg) - ChatGPT',
 					data: data,
-					backgroundColor: 'rgba(54, 162, 235, 0.2)',
+					backgroundColor: 'rgba(54, 162, 235, 1)',
 					borderColor: 'rgba(54, 162, 235, 1)',
 					borderWidth: 1
-				}]
+				},
+                    {
+                    label: 'CO2e (kg) - Research',
+					data: data2,
+					backgroundColor: 'rgba(189, 25, 170, 1)',
+					borderColor: 'rgba(189, 25, 170, 1)',
+					borderWidth: 1
+                    }]
 			},
 			options: {
 				scales: {
