@@ -62,9 +62,28 @@ def calculate():
         food_footprint = 2 # kg CO2 per kg of tofu consumed
 
     if home_energy == 'electricity':
-        home_energy_footprint = 0.527 # kg CO2 per kWh of electricity used
+        home_energy_footprint = 0.527  # kg CO2 per kWh of electricity used
     elif home_energy == 'natural_gas':
-        home_energy_footprint = 0.184 # kg CO2 per kWh of natural gas used
+        home_energy_footprint = 0.184  # kg CO2 per kWh of natural gas used
+    elif home_energy == 'coal':
+        home_energy_footprint = 1.001  # kg CO2 per kWh of coal used
+    elif home_energy == 'petroleum':
+        home_energy_footprint = 0.717  # kg CO2 per kWh of petroleum used
+    elif home_energy == 'nuclear':
+        home_energy_footprint = 0.018  # kg CO2 per kWh of nuclear power used
+    elif home_energy == 'wind':
+        home_energy_footprint = 0.012  # kg CO2 per kWh of wind power used
+    elif home_energy == 'solar':
+        home_energy_footprint = 0.055  # kg CO2 per kWh of solar power used
+    elif home_energy == 'hydro':
+        home_energy_footprint = 0.018  # kg CO2 per kWh of hydro power used
+    elif home_energy == 'biomass':
+        home_energy_footprint = 0.230  # kg CO2 per kWh of biomass power used
+    elif home_energy == 'geothermal':
+        home_energy_footprint = 0.034  # kg CO2 per kWh of geothermal power used
+    else:
+        print("Invalid input. Please enter a valid energy source.")
+        home_energy_footprint = 0
 
     # Calculate total carbon footprint
     total_footprint = transportation_footprint * 10 + food_footprint * 2 + home_energy_footprint * 1000 # assuming 10 km per day, 2 meals per day, and 1000 kWh per year

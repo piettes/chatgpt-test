@@ -35,9 +35,31 @@
             <input class="mr-2" type="radio" id="electricity" name="home_energy" value="electricity" checked>
             <label class="mr-8" for="electricity">Electricity</label>
             <input class="mr-2" type="radio" id="natural_gas" name="home_energy" value="natural_gas">
-            <label for="natural_gas">Natural gas</label>
+            <label class="mr-8" for="natural_gas">Natural gas</label>
+            <input class="mr-2" type="radio" id="coal" name="home_energy" value="coal">
+            <label for="coal">Coal</label>
         </div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+
+        <div class="flex items-center mb-4">
+            <input class="mr-2" type="radio" id="nuclear" name="home_energy" value="nuclear">
+            <label class="mr-8" for="nuclear">Nuclear</label>
+            <input class="mr-2" type="radio" id="wind" name="home_energy" value="wind">
+            <label class="mr-8" for="wind">Wind</label>
+            <input class="mr-2" type="radio" id="solar" name="home_energy" value="solar">
+            <label for="solar">Solar</label>
+        </div>
+
+        <div class="flex items-center mb-4">
+            <input class="mr-2" type="radio" id="hydro" name="home_energy" value="hydro">
+            <label class="mr-8" for="hydro">Hydro</label>
+            <input class="mr-2" type="radio" id="biomass" name="home_energy" value="biomass">
+            <label class="mr-8" for="biomass">Biomass</label>
+            <input class="mr-2" type="radio" id="geothermal" name="home_energy" value="geothermal">
+            <label for="geothermal">Geothermal</label>
+        </div>
+
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit">
             Calculate
         </button>
     </form>
